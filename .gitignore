@@ -4,3 +4,7 @@
 build/
 pycache/
 *.pyc
+
+api.py
+api1.py
+image.png
