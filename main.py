@@ -1,4 +1,8 @@
 from flask import Flask, request, jsonify,render_template
+import os
+from data import get_env_variable,get_direcory_path
+
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -8,12 +12,11 @@ def home():
 
 @app.route('/home', methods=['GET'])
 def home1():
-    # 2. Define the data you want to send to the HTML page
-    context_title = "Home Page"
-    username = "Alex"
-    
-    # 3. Render the file and pass variables (HTML_var=Python_var)
-    return render_template('index.html', title=context_title, user_name=username)
+    context_title = get_env_variable('TITLE')
+    Path = get_direcory_path()
+    return render_template('index.html', Title=context_title, Path=Path)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0' , port=5000)

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company Dashboard · InternConnect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/variables.css" rel="stylesheet">
+  <link href="../../css/global.css" rel="stylesheet">
+  <link href="../../css/components.css" rel="stylesheet">
+  <link href="../../css/responsive.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <a class="brand d-block mb-3" href="../../index.html"><span class="brand-mark">I</span>InternConnect</a>
+      <div class="sidebar-section-label">Company</div>
+      <a class="sidebar-link active" href="dashboard.html">Dashboard</a>
+<a class="sidebar-link " href="profile.html">Company Profile</a>
+<a class="sidebar-link " href="internships.html">Internships</a>
+<a class="sidebar-link " href="create-internship.html">Create Internship</a>
+<a class="sidebar-link " href="applicants.html">Applicants</a>
+      <div class="sidebar-section-label">Account</div>
+      <a class="sidebar-link" href="../public/login.html">Logout</a>
+    </div>
+  </aside>
+  <div class="app-main">
+    <header class="dashboard-topbar">
+      <button class="icon-button d-lg-none" onclick="document.getElementById('sidebar').classList.toggle('is-open')" aria-label="Open navigation">☰</button>
+      <div></div>
+      <div class="d-flex align-items-center gap-2">
+        <button class="icon-button" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
+        <span class="small text-muted-custom">Account</span>
+      </div>
+    </header>
+    <main class="dashboard-content">
+
+<div id="dashboard">
+<div class="page-header"><span class="eyebrow">Company</span><h1>Company dashboard</h1><p>Manage opportunities and review incoming applications.</p></div>
+<div class="row g-3 mb-4">
+<div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-label">Active internships</div><div class="stat-value" id="active">—</div></div></div>
+<div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-label">Applicants</div><div class="stat-value" id="applicants">—</div></div></div>
+<div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-label">Shortlisted</div><div class="stat-value" id="shortlisted">—</div></div></div>
+<div class="col-6 col-lg-3"><div class="stat-card"><div class="stat-label">Accepted</div><div class="stat-value" id="accepted">—</div></div></div>
+</div>
+<div class="app-card table-responsive"><h3>Recent applications</h3><table class="table align-middle"><thead><tr><th>Candidate</th><th>Internship</th><th>Match</th><th>Status</th></tr></thead><tbody id="recent"></tbody></table></div>
+</div></main></div></div>
+
+<script src="../../js/api.js"></script>
+<script src="../../js/components.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",async()=>{const t=document.getElementById("dashboard");try{const r=await API.get("/api/company/dashboard"),d=r.data||{};document.getElementById("active").textContent=d.statistics?.active_internships??0;document.getElementById("applicants").textContent=d.statistics?.total_applicants??0;document.getElementById("shortlisted").textContent=d.statistics?.shortlisted??0;document.getElementById("accepted").textContent=d.statistics?.accepted??0;const a=d.recent_applications||[];document.getElementById("recent").innerHTML=a.length?a.map(x=>`<tr><td>${escapeHTML(x.student?.name)}</td><td>${escapeHTML(x.internship?.title)}</td><td>${escapeHTML(x.match_percentage??"—")}%</td><td>${renderStatus(x.status)}</td></tr>`).join(""):`<tr><td colspan="4" class="text-center text-muted-custom py-4">No applications yet.</td></tr>`}catch(e){t.innerHTML=`<div class="alert alert-custom">${escapeHTML(e.message)}</div>`}});
+</script>
+</body>
+</html>
