@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Applicant Profile · InternConnect</title>
+  <title>{{Title}}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
 <div class="app-shell">
   <aside class="app-sidebar" id="sidebar">
     <div class="sidebar-inner">
-      <a class="brand d-block mb-3" href="{{url_for('company')}}"><span class="brand-mark">I</span>InternConnect</a>
+      <a class="brand d-block mb-3" href="{{url_for('company')}}"><span class="brand-mark">I</span>{{Title}}</a>
       <div class="sidebar-section-label">Company</div>
       <a class="sidebar-link " href="{{url_for('company')}}">Dashboard</a>
 <a class="sidebar-link " href="{{url_for('company_profile')}}">Company Profile</a>

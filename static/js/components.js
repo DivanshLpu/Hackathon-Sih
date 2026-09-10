@@ -6,7 +6,7 @@ function renderPublicNavbar(active = "") {
     <nav class="navbar navbar-expand-lg app-navbar">
       <div class="container app-container">
         <a class="navbar-brand brand d-flex align-items-center" href="${pageRoot()}index.html">
-          <span class="brand-mark">I</span>InternConnect
+          <span class="brand-mark">I</span>InternX
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNav">
           <span class="navbar-toggler-icon"></span>
@@ -32,10 +32,10 @@ function renderFooter() {
     <footer class="footer">
       <div class="container app-container d-flex flex-wrap justify-content-between gap-3">
         <div>
-          <div class="brand mb-1">InternConnect</div>
+          <div class="brand mb-1">InternX</div>
           <div class="small text-muted-custom">Skills, opportunities and industry connection.</div>
         </div>
-        <div class="small text-muted-custom">© 2026 InternConnect</div>
+        <div class="small text-muted-custom">© 2026 InternX</div>
       </div>
     </footer>
   `;
