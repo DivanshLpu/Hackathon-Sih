@@ -22,12 +22,12 @@
       <div class="sidebar-section-label">Student</div>
       <a class="sidebar-link " href="{{url_for('student')}}">Dashboard</a>
 <a class="sidebar-link active" href="{{url_for('student_profile')}}">Profile</a>
-<a class="sidebar-link " href="skills.html">Skills</a>
-<a class="sidebar-link " href="applications.html">Applications</a>
-<a class="sidebar-link " href="resume.html">Resume</a>
-<a class="sidebar-link " href="portfolio.html">Portfolio</a>
+<a class="sidebar-link " href="{{url_for('student_skills')}}">Skills</a>
+<a class="sidebar-link " href="{{url_for('student_applications')}}">Applications</a>
+<a class="sidebar-link " href="{{url_for('student_resume')}}">Resume</a>
+<a class="sidebar-link " href="{{url_for('student_portfolio')}}">Portfolio</a>
       <div class="sidebar-section-label">Account</div>
-      <a class="sidebar-link" href="../public/login.html">Logout</a>
+      <a class="sidebar-link" href="{{url_for('login')}}">Logout</a>
     </div>
   </aside>
   <div class="app-main">

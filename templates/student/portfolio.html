@@ -22,12 +22,12 @@
       <div class="sidebar-section-label">Student</div>
       <a class="sidebar-link " href="{{url_for('student')}}">Dashboard</a>
 <a class="sidebar-link " href="{{url_for('student_profile')}}">Profile</a>
-<a class="sidebar-link " href="skills.html">Skills</a>
-<a class="sidebar-link " href="applications.html">Applications</a>
-<a class="sidebar-link " href="resume.html">Resume</a>
-<a class="sidebar-link active" href="portfolio.html">Portfolio</a>
+<a class="sidebar-link " href="{{url_for('student_skills')}}">Skills</a>
+<a class="sidebar-link " href="{{url_for('student_applications')}}">Applications</a>
+<a class="sidebar-link " href="{{url_for('student_resume')}}">Resume</a>
+<a class="sidebar-link active" href="{{url_for('student_portfolio')}}">Portfolio</a>
       <div class="sidebar-section-label">Account</div>
-      <a class="sidebar-link" href="../public/login.html">Logout</a>
+      <a class="sidebar-link" href="{{url_for('login')}}">Logout</a>
     </div>
   </aside>
   <div class="app-main">
@@ -49,6 +49,7 @@
 
 <script src="{{url_for('static', filename='js/api.js')}}"></script>
 <script src="{{ url_for('static', filename='js/components.js')}}"></script>
+<script src="{{ url_for('static', filename='js/theme.js')}}"></script>
 <script>
 document.addEventListener("DOMContentLoaded",async()=>{const t=document.getElementById("portfolio");try{const r=await API.get("/api/student/portfolio"),d=r.data||{};t.innerHTML=`<div class="app-card mb-3"><h2>${escapeHTML(d.student?.name)}</h2><p>${escapeHTML(d.student?.college)} · ${escapeHTML(d.student?.degree)} · ${escapeHTML(d.student?.branch)}</p><p>${escapeHTML(d.student?.bio)}</p></div><div class="app-card mb-3"><h3>Skills</h3>${renderSkillTags(d.skills||[])}</div><div class="app-card"><h3>Projects</h3>${(d.projects||[]).length?(d.projects||[]).map(x=>`<div class="py-3 border-bottom"><strong>${escapeHTML(x.title)}</strong><p>${escapeHTML(x.description)}</p><a class="text-link" href="${escapeHTML(x.url)}" target="_blank" rel="noopener">View project</a></div>`).join(""):`<p class="mb-0">No projects added yet.</p>`}</div>`}catch(e){t.innerHTML=`<div class="alert alert-custom">${escapeHTML(e.message)}</div>`}});
 </script>
