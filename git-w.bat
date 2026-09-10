@@ -13,6 +13,9 @@ git.exe add .
 echo Committing changes...
 git.exe commit -m "%msg%"
 
+echo Pushing Files...
+git.exe push origin main
+
 echo.
 echo Done!
 pause
