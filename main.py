@@ -13,9 +13,15 @@ def home():
 @app.route('/home', methods=['GET'])
 def home1():
     context_title = get_env_variable('TITLE')
-    Path = get_direcory_path()
-    return render_template('index.html', Title=context_title, Path=Path)
+    return render_template('index.html', Title=context_title)
 
+@app.route('/student',methods=['GET'])
+def student():
+    return render_template('/student/dashboard.html')
+
+@app.route('/student/profile',methods=['GET'])
+def student_profile():
+    return render_template('/student/profile.html')
 
 
 if __name__ == "__main__":
